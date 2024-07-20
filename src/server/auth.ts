@@ -5,7 +5,7 @@ import { sigInSchema, InferSigInSchema } from '@/lib/zod/auth-schema';
 import { redirect } from 'next/navigation';
 
 export async function actionSignUp(values: InferSigInSchema) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   // validate data
   const validateData = sigInSchema.parse(values);
@@ -22,7 +22,7 @@ export async function actionSignUp(values: InferSigInSchema) {
 }
 
 export async function actionSignIn(values: InferSigInSchema) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   // validate data
   const validateData = sigInSchema.parse(values);
@@ -39,7 +39,7 @@ export async function actionSignIn(values: InferSigInSchema) {
 }
 
 export async function actionSignOut() {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const response = await supabase.auth.signOut();
 

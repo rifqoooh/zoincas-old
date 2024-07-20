@@ -11,7 +11,7 @@ const { shoppingPlanId, createdAt, ...shoppingItemsCols } =
   getTableColumns(shoppingItems);
 
 export async function getShoppingPlanItems(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -38,7 +38,7 @@ export async function getShoppingPlanItems(id: string) {
 }
 
 export async function getShoppingPlanItem(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -74,7 +74,7 @@ export async function createShoppingPlanItem(
   id: string,
   values: InferShoppingItemSchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -98,7 +98,7 @@ export async function updateShoppingPlanItem(
   id: string,
   values: InferShoppingItemSchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -137,7 +137,7 @@ export async function updateShoppingPlanItem(
 }
 
 export async function deleteShoppingPlanItems(ids: string[]) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -170,7 +170,7 @@ export async function deleteShoppingPlanItems(ids: string[]) {
 }
 
 export async function deleteShoppingPlanItem(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');

@@ -6,7 +6,7 @@ import { eq } from 'drizzle-orm';
 import { users } from '@/lib/supabase/schema';
 
 export async function getUser() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');

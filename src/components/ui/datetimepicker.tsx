@@ -378,6 +378,7 @@ const DateTimePicker = React.forwardRef<
     } else if (jsDate) {
       state.setValue(currentValue());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.value, onJsDateChange]);
   return (
     <div

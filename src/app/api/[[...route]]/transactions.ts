@@ -160,27 +160,6 @@ const app = new Hono()
       );
     }
   )
-  .get('/summary', supabaseMiddleware(), async (c) => {
-    const data = await getIncomeExpenseSummary();
-
-    if (!data) {
-      return c.json(
-        {
-          data: [],
-          error: [{ message: 'The requested resource was not found' }],
-        },
-        404
-      );
-    }
-
-    return c.json(
-      {
-        data: data,
-        error: [],
-      },
-      200
-    );
-  })
   .get(
     '/account/:id',
     supabaseMiddleware(),

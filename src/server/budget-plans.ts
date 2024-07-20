@@ -14,7 +14,7 @@ import { InferBudgetPlanSchema } from '@/lib/zod/budget-plan-schema';
 const { userId, createdAt, ...budgetPlansCols } = getTableColumns(budgetPlans);
 
 export async function getBudgetPlansSummary() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -72,7 +72,7 @@ export async function getBudgetPlansSummary() {
 }
 
 export async function getBudgetPlans() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -86,7 +86,7 @@ export async function getBudgetPlans() {
 }
 
 export async function getBudgetPlanCategories() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -117,7 +117,7 @@ export async function getBudgetPlanCategories() {
 }
 
 export async function getBudgetPlan(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -132,7 +132,7 @@ export async function getBudgetPlan(id: string) {
 }
 
 export async function createBudgetPlan(values: InferBudgetPlanSchema) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -152,7 +152,7 @@ export async function updateBudgetPlan(
   id: string,
   values: InferBudgetPlanSchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -167,7 +167,7 @@ export async function updateBudgetPlan(
 }
 
 export async function deleteBudgetPlan(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');

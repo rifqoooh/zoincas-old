@@ -11,7 +11,7 @@ const { budgetPlanId, createdAt, ...budgetCategoriesCols } =
   getTableColumns(budgetCategories);
 
 export async function getBudgetPlanCategories(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -37,7 +37,7 @@ export async function getBudgetPlanCategories(id: string) {
 }
 
 export async function getBudgetPlanCategory(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -70,7 +70,7 @@ export async function createBudgetPlanCategory(
   id: string,
   values: InferBudgetCategorySchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -93,7 +93,7 @@ export async function updateBudgetPlanCategory(
   id: string,
   values: InferBudgetCategorySchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -125,7 +125,7 @@ export async function updateBudgetPlanCategory(
 }
 
 export async function deleteBudgetCategories(ids: string[]) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -155,7 +155,7 @@ export async function deleteBudgetCategories(ids: string[]) {
 }
 
 export async function deleteBudgetPlanCategory(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');

@@ -3,7 +3,7 @@ import { MoblieNav } from './mobile-nav';
 import { DesktopNav } from './desktop-nav';
 
 export async function Navigation() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data, error } = await supabase.auth.getUser();
 
   if (error || !data?.user) {

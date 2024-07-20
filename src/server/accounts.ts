@@ -10,7 +10,7 @@ import { InferAccountSchema } from '@/lib/zod/account-schema';
 const { userId, createdAt, ...accountsCols } = getTableColumns(accounts);
 
 export async function getAccounts() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -43,7 +43,7 @@ export async function getAccounts() {
 }
 
 export async function getAccount(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -58,7 +58,7 @@ export async function getAccount(id: string) {
 }
 
 export async function createAccount(values: InferAccountSchema) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -78,7 +78,7 @@ export async function createAccount(values: InferAccountSchema) {
 }
 
 export async function updateAccount(id: string, values: InferAccountSchema) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -96,7 +96,7 @@ export async function updateAccount(id: string, values: InferAccountSchema) {
 }
 
 export async function deleteAccount(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');

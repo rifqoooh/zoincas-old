@@ -10,7 +10,7 @@ import { coalesce } from '@/lib/utils';
 const { userId, createdAt, ...categoriesCols } = getTableColumns(categories);
 
 export async function getCategories() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -43,7 +43,7 @@ export async function getCategories() {
 }
 
 export async function getCategory(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -58,7 +58,7 @@ export async function getCategory(id: string) {
 }
 
 export async function createCategory(values: InferCategorySchema) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -75,7 +75,7 @@ export async function createCategory(values: InferCategorySchema) {
 }
 
 export async function updateCategory(id: string, values: InferCategorySchema) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -90,7 +90,7 @@ export async function updateCategory(id: string, values: InferCategorySchema) {
 }
 
 export async function deleteCategory(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');

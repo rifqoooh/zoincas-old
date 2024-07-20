@@ -51,7 +51,7 @@ function summaryPlansCTE(userId: string) {
 }
 
 export async function getTransactions() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -85,7 +85,7 @@ export async function getTransactions() {
 }
 
 export async function getTransaction(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -117,7 +117,7 @@ export async function getTransaction(id: string) {
 }
 
 export async function getAccountTransactions(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -153,7 +153,7 @@ export async function getAccountTransactions(id: string) {
 }
 
 export async function getBudgetPlanTransactions(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -202,7 +202,7 @@ export async function getBudgetPlanTransactions(id: string) {
 }
 
 export async function getTransactionBudget(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -224,7 +224,7 @@ export async function getTransactionBudget(id: string) {
 }
 
 export async function getTransactionShopping(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -244,7 +244,7 @@ export async function getIncomeExpenseSummary(options: {
   endDate: Date;
   accountId?: string;
 }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -303,7 +303,7 @@ export async function getCategorySummary(options: {
   endDate: Date;
   accountId?: string;
 }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -352,7 +352,7 @@ export async function getIncomeExpenseSummaryByDate(options: {
   endDate: Date;
   accountId?: string;
 }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -401,7 +401,7 @@ export async function getIncomeExpenseSummaryByDate(options: {
 }
 
 export async function createTransaction(values: InferTransactionSchema) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -425,7 +425,7 @@ export async function createTransactionShopping(
   id: string,
   values: InferLinkShoppingPlanSchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -453,7 +453,7 @@ export async function updateTransaction(
   id: string,
   values: InferTransactionSchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -491,7 +491,7 @@ export async function updateTransactionBudget(
   id: string,
   values: InferConnectBudgetPlanSchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -524,7 +524,7 @@ export async function updateTransactionShopping(
   id: string,
   values: InferLinkShoppingPlanSchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -554,7 +554,7 @@ export async function updateTransactionShopping(
 }
 
 export async function deleteTransactions(ids: string[]) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -582,7 +582,7 @@ export async function deleteTransactions(ids: string[]) {
 }
 
 export async function deleteTransaction(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');

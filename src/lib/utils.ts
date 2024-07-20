@@ -28,7 +28,7 @@ export function mergeRefs<T = any>(
 
 export const supabaseMiddleware = (): MiddlewareHandler => {
   return async (c, next) => {
-    const supabase = createClient();
+    const supabase = await createClient();
     const { data: auth, error } = await supabase.auth.getUser();
 
     if (error || !auth?.user) {

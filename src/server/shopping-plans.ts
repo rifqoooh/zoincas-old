@@ -15,7 +15,7 @@ const { userId, createdAt, ...shoppingPlansCols } =
   getTableColumns(shoppingPlans);
 
 export async function getShoppingPlansSummary() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -53,7 +53,7 @@ export async function getShoppingPlansSummary() {
 }
 
 export async function getShoppingPlanSummary(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -95,7 +95,7 @@ export async function getShoppingPlanSummary(id: string) {
 }
 
 export async function getShoppingPlan(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -112,7 +112,7 @@ export async function getShoppingPlan(id: string) {
 }
 
 export async function createShoppingPlan(values: InferShoppingPlanSchema) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -135,7 +135,7 @@ export async function updateShoppingPlan(
   id: string,
   values: InferShoppingPlanSchema
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
@@ -157,7 +157,7 @@ export async function updateShoppingPlan(
 }
 
 export async function deleteShoppingPlan(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: auth, error } = await supabase.auth.getUser();
 
   if (error || !auth?.user) throw new Error('Unauthorized');
