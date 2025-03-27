@@ -1,7 +1,7 @@
 'use server';
 
 import db from '@/lib/supabase/db';
-import { and, eq, sum, getTableColumns } from 'drizzle-orm';
+import { and, eq, sum, desc, getTableColumns } from 'drizzle-orm';
 import { coalesce, jsonAggBuildObject } from '@/lib/utils';
 import { createClient } from '@/lib/supabase/auth/server';
 import {
@@ -66,7 +66,8 @@ export async function getBudgetPlansSummary() {
       eq(budgetPlans.id, budgetCategoriesQuery.budgetPlanId)
     )
     .where(eq(budgetPlans.userId, auth.user.id))
-    .groupBy(budgetPlans.id);
+    .groupBy(budgetPlans.id)
+    .orderBy(desc(budgetPlans.createdAt));
 
   return data;
 }
